@@ -18,19 +18,17 @@ import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static javax.crypto.Cipher.DECRYPT_MODE;
-import static javax.crypto.Cipher.ENCRYPT_MODE;
-
 @Controller
-public class WelcomeController {
+@RequestMapping("/lab1")
+public class FirstLabController {
 
-    private static final String MAIN_PAGE = "main";
+    private static final String FIRST_LAB_PAGE = "first-lab";
     private static final String SECRET_KEY = "secretKey";
     private static final String SELECTED_METHOD = "selectedMethod";
     private static final String ENCRYPTED_VALUE = "encryptedValue";
     private static final String ENCRYPTED_METHOD_TYPE = "encryptedMethodType";
 
-    @Value("classpath:keys/key.txt")
+    @Value("classpath:keys/defaultDesAesKey.txt")
     private Resource resource;
 
     @Autowired
@@ -40,7 +38,7 @@ public class WelcomeController {
     public String welcome(Map<String, Object> model) {
         initMethods(model);
         initMethodTypes(model);
-        return MAIN_PAGE;
+        return FIRST_LAB_PAGE;
     }
 
     @RequestMapping(value = "/generateKey", method = RequestMethod.POST)
@@ -51,7 +49,7 @@ public class WelcomeController {
         SecretKey secretKey = this.cryptHelper.getDefaultSecretKey(method);
         httpSession.setAttribute(SECRET_KEY, secretKey);
         httpSession.setAttribute(SELECTED_METHOD, method);
-        return MAIN_PAGE;
+        return FIRST_LAB_PAGE;
     }
 
     @RequestMapping(value = "/encrypt", method = RequestMethod.POST)
@@ -66,7 +64,7 @@ public class WelcomeController {
         session.setAttribute(ENCRYPTED_VALUE, result);
         session.setAttribute(ENCRYPTED_METHOD_TYPE, methodType);
         model.put("result", new String(result));
-        return MAIN_PAGE;
+        return FIRST_LAB_PAGE;
     }
 
     @RequestMapping(value = "/decrypt", method = RequestMethod.POST)
@@ -80,7 +78,7 @@ public class WelcomeController {
         SecretKey secretKey = getSecretKey(isFileUsed, session, selectedMethod);
         String decryptedResult = this.cryptHelper.getDecryptedValue(result, secretKey, methodType, selectedMethod);
         model.put("initValue", decryptedResult);
-        return MAIN_PAGE;
+        return FIRST_LAB_PAGE;
     }
 
     private SecretKey getSecretKey(boolean isFileUsed, HttpSession session, String selectedMethod) {

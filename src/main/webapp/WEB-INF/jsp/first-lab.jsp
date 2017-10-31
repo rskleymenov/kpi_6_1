@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 </nav>
 
 <div class="container">
-    <form method="POST" action="/generateKey">
+    <form method="POST" action="/lab1/generateKey">
         Please, before encrypting generate a secret key for method:
         <select name="method">
             <c:forEach items="${methodList}" var="method">
@@ -32,7 +32,7 @@
     <c:out value="Selected method: ${selectedMethod}"/>
     <br>
     <br>
-    <form method="POST" action="/encrypt">
+    <form method="POST" action="/lab1/encrypt">
         <table class="table table-striped">
             <tr>
                 <td width="40%">Type</td>
@@ -42,6 +42,7 @@
                             <option>${type.key}</option>
                         </c:forEach>
                     </select>
+                </td>
             </tr>
             <tr>
                 <td>Input data</td>
@@ -70,7 +71,7 @@
     </form>
 
 
-    <form method="POST" action="/decrypt">
+    <form method="POST" action="/lab1/decrypt">
         <table class="table table-striped">
             <tr>
                 <td width="40%">
@@ -121,7 +122,7 @@
 
 </div>
 
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 
