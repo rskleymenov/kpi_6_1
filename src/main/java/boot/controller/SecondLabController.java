@@ -28,7 +28,7 @@ public class SecondLabController {
     @Autowired
     private ELGamalEncryption gamalEncryption;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/**", method = RequestMethod.GET)
     public String initPage() {
         return SECOND_LAB_PAGE;
     }

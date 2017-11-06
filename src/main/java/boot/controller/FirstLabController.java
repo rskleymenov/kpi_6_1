@@ -34,7 +34,7 @@ public class FirstLabController {
     @Autowired
     private DesAesCryptHelper cryptHelper;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/**", method = RequestMethod.GET)
     public String welcome(Map<String, Object> model) {
         initMethods(model);
         initMethodTypes(model);
