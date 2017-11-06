@@ -35,7 +35,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Result SHA-512</td>
+                <td>Result SHA</td>
                 <td>
                     <c:out value="${result_sha}"/>
                 </td>

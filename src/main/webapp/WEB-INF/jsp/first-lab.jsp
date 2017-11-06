@@ -78,7 +78,7 @@
                     Decrypt last encrypted value:
                 </td>
                 <td>
-                    Value: <c:out value="${result}"/>/>
+                    Value: <c:out value="${result}"/>
                 </td>
             </tr>
             <tr>

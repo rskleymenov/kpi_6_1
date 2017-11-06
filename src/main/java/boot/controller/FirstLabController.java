@@ -13,6 +13,7 @@ import pasko.lab1.DesAesCryptHelper;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
@@ -63,7 +64,7 @@ public class FirstLabController {
         byte[] result = this.cryptHelper.getEncryptedValue(inputData, secretKey, methodType, selectedMethod);
         session.setAttribute(ENCRYPTED_VALUE, result);
         session.setAttribute(ENCRYPTED_METHOD_TYPE, methodType);
-        model.put("result", new String(result));
+        model.put("result", DatatypeConverter.printHexBinary(result));
         return FIRST_LAB_PAGE;
     }
 
